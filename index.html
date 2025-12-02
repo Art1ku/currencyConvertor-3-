@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="wrapper">
+
+    <h1>Currency Converter</h1>
+    <p class="subtitle">Check live rates, set rate alerts, receive notifications and more.</p>
+
+    <div class="card">
+        <label>Amount</label>
+
+        <div class="row">
+            <div class="input-box">
+                <div class="flag-box">
+                    <img id="flag-from" src="https://flagsapi.com/US/flat/64.png" />
+                </div>
+                <div class="custom-select" id="from-custom"></div>
+                <select id="from" hidden></select>
+            </div>
+
+            <input id="amount" type="number" placeholder="1000" />
+        </div>
+
+        <div class="swap">
+            <button id="swap">
+                <div class="swapImg"></div>
+            </button>
+        </div>
+
+        <div class="line"></div>
+
+        <label>Converted Amount</label>
+
+        <div class="row">
+            <div class="input-box">
+                <div class="flag-box">
+                    <img id="flag-to" src="https://flagsapi.com/EU/flat/64.png" />
+                </div>
+                <div class="custom-select" id="to-custom"></div>
+                <select id="to" hidden></select>
+            </div>
+
+            <div class="result-box" id="result">—</div>
+        </div>
+
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

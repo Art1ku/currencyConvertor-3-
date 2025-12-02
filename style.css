@@ -1,0 +1,314 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+body {
+    background: linear-gradient(180deg, #eef2f7, #ffffff);
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    color: #222;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+}
+
+.wrapper {
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.subtitle {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-bottom: 25px;
+}
+
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    position: relative;
+}
+
+.line {
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, 0); 
+    width: 90%;
+    height: 1px;
+    background: #e0e0e0;
+    z-index: 2;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 6px;
+    text-align: left;
+    opacity: 0.7;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-box {
+    display: flex;
+    align-items: center;
+    /* background: #f5f5f5; */
+    padding: 10px 12px;
+    border-radius: 12px;
+    gap: 10px;
+}
+
+
+
+.flag-box {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    overflow: hidden; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+}
+
+.flag-box img {
+    width: auto;
+    height: 100%;
+    object-fit: cover; 
+}
+
+
+select {
+    border: none;
+    background: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+input {
+    padding: 10px 15px;
+    width: 160px;
+    background: #f5f5f5;
+    border-radius: 12px;
+    border: none;
+    font-size: 18px;
+    text-align: right;
+}
+
+.result-box {
+    padding: 10px 15px;
+    width: 160px;
+    background: #f5f5f5;
+    border-radius: 12px;
+    font-size: 18px;
+    text-align: right;
+}
+
+.swap {
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+
+
+}
+
+.swap button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: #304ffe;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(48,79,254,0.4);
+        z-index: 3;
+}
+
+.swapImg {
+    width: 24px;
+    height: 24px;
+    background: url('./public/Group.svg') no-repeat center center;
+    background-size: contain;
+    margin: auto;
+    transition: transform 0.5s ease;
+}
+
+.swapImg.rotate {
+    transform: rotate(180deg);
+}
+
+.swap button:active {
+    transform: scale(0.95);
+}
+
+
+
+.custom-select {
+    position: relative;
+    width: 120px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.custom-select .selected {
+    padding: 6px 8px;
+    /* background: #f5f5f5; */
+    border-radius: 12px;
+    text-align: center;
+}
+
+.custom-select .options {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: none;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.custom-select .options .option {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 8px;
+    cursor: pointer;
+}
+
+.custom-select .options .option:hover {
+    background: #e0e0e0;
+}
+
+.custom-select .options img {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+@media (max-width: 900px) {
+
+    body {
+        padding: 20px;
+    }
+
+    .wrapper {
+        max-width: 500px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .row {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
+
+    input,
+    .result-box {
+        width: 100%;
+        font-size: 17px;
+    }
+
+    .input-box {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .custom-select {
+        width: 100%;
+    }
+
+    .line {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+    }
+
+    .card {
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    .row {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+
+    .input-box {
+        width: 100%;
+        padding: 8px 10px;
+        gap: 8px;
+    }
+
+    input,
+    .result-box {
+        width: 100%;
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .custom-select {
+        width: 100%;
+    }
+
+    .flag-box {
+        width: 30px;
+        height: 30px;
+    }
+
+    .swap button {
+        width: 44px;
+        height: 44px;
+    }
+
+    .swapImg {
+        width: 22px;
+        height: 22px;
+    }
+}
