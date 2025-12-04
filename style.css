@@ -200,10 +200,6 @@ input {
 
 
 
-
-
-
-
 .custom-select .selected {
     padding: 6px 8px;
     border-radius: 12px;
@@ -248,10 +244,6 @@ input {
 
 
 
-
-
-
-
 .custom-select .options {
     position: absolute;
     top: 110%;
@@ -261,8 +253,8 @@ input {
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     
-    height: 150px;           /* фиксированная высота */
-    overflow-y: auto;        /* скролл внутри шторки */
+    height: 150px;          
+    overflow-y: auto;       
     
     opacity: 0;
     transform: translateY(-10px);
