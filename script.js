@@ -4,6 +4,7 @@ const amountInput = document.getElementById("amount");
 const fromSelect = document.getElementById("from");
 const toSelect = document.getElementById("to");
 const resultEl = document.getElementById("result");
+const indicativeEl = document.getElementById("indicative");
 const swapBtn = document.getElementById("swap");
 
 let rates = {};
@@ -41,20 +42,22 @@ function createCustomSelect(customId, selectEl) {
         option.addEventListener("click", () => {
             selected.textContent = cur;
             selectEl.value = cur;
-            optionsContainer.style.display = "none";
+            container.classList.remove("open");   
             updateFlag(selectEl, selectEl.id === "from" ? "flag-from" : "flag-to");
             convert();
+            updateIndicativeRate();
         });
         optionsContainer.appendChild(option);
     });
 
     selected.addEventListener("click", e => {
         e.stopPropagation();
-        optionsContainer.style.display = optionsContainer.style.display === "block" ? "none" : "block";
+        container.classList.toggle("open");
     });
 
+
     document.addEventListener("click", () => {
-        optionsContainer.style.display = "none";
+        container.classList.remove("open");
     });
 }
 
@@ -86,6 +89,8 @@ async function loadCurrencies() {
 
     updateFlag(fromSelect, "flag-from");
     updateFlag(toSelect, "flag-to");
+
+    updateIndicativeRate();
 }
 
 loadCurrencies();
@@ -94,6 +99,23 @@ function updateFlag(select, imgId) {
     const currency = select.value;
     const flag = getFlagCode(currency);
     document.getElementById(imgId).src = `https://flagsapi.com/${flag}/flat/64.png`;
+}
+
+// ★ NEW — обновление строкi "1 USD = 89.50 KGS"
+function updateIndicativeRate() {
+    const from = fromSelect.value;
+    const to = toSelect.value;
+
+    if (!rates[from] || !rates[to]) return;
+
+    const rate = (rates[to] / rates[from]).toFixed(4);
+
+    indicativeEl.innerHTML = `
+    Indicative Exchange Rate:
+    <br>
+    <span style="margin-top:20px; display:inline-block; color:#000; font-size: 18px;">
+        1 ${from} = ${rate} ${to}
+    </span>`;
 }
 
 async function convert() {
@@ -115,14 +137,22 @@ async function convert() {
         const usdValue = amount / rates[from];
         const converted = usdValue * rates[to];
         resultEl.textContent = converted.toFixed(2) + " " + to;
+
+        updateIndicativeRate();
     } catch (e) {
         resultEl.textContent = "Ошибка!";
     }
 }
 
 amountInput.addEventListener("input", convert);
-fromSelect.addEventListener("change", convert);
-toSelect.addEventListener("change", convert);
+fromSelect.addEventListener("change", () => {
+    convert();
+    updateIndicativeRate();
+});
+toSelect.addEventListener("change", () => {
+    convert();
+    updateIndicativeRate();
+});
 
 swapBtn.addEventListener("click", () => {
     const temp = fromSelect.value;
@@ -136,7 +166,10 @@ swapBtn.addEventListener("click", () => {
     document.querySelector("#to-custom .selected").textContent = toSelect.value;
 
     convert();
+    updateIndicativeRate();
 
     const swapImg = document.querySelector(".swapImg");
     swapImg.classList.toggle("rotate");
 });
+
+
