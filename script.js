@@ -101,7 +101,6 @@ function updateFlag(select, imgId) {
     document.getElementById(imgId).src = `https://flagsapi.com/${flag}/flat/64.png`;
 }
 
-// ★ NEW — обновление строкi "1 USD = 89.50 KGS"
 function updateIndicativeRate() {
     const from = fromSelect.value;
     const to = toSelect.value;
