@@ -11,7 +11,7 @@ input::-webkit-inner-spin-button {
 }
 
 body {
-    background: linear-gradient(180deg, #eef2f7, #ffffff);
+    background: linear-gradient(150deg,rgba(207, 242, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
     display: flex;
     justify-content: center;
     padding: 30px;
@@ -144,7 +144,7 @@ input {
     height: 48px;
     border-radius: 50%;
     border: none;
-    background: #304ffe;
+    background: #26278D;
     color: white;
     font-size: 22px;
     cursor: pointer;
